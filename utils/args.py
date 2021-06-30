@@ -55,6 +55,8 @@ def get_args():
     parser.add_argument('--image_size', type=int, default=224, help='the image size')
     parser.add_argument('--patch_size', type=int, default=32, help='the patch size')
     parser.add_argument('--num_classes', type=int, default=1000, help='the number of classes')
+    parser.add_argument('--dataset', type=str, default='ImageNet', help='the dataset')
+
     
 
     args = parser.parse_args()
