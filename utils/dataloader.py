@@ -30,8 +30,8 @@ def get_dataloader(args):
 
         val_loader = torch.utils.data.DataLoader(
             datasets.ImageFolder(valdir, transforms.Compose([
-                transforms.Resize(384),
-                transforms.CenterCrop(384),
+                transforms.Resize(224),
+                transforms.CenterCrop(224),
                 transforms.ToTensor(),
                 normalize,
             ])),
