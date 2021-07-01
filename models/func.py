@@ -31,7 +31,7 @@ def get_models(args):
     if args.gpu is not None:
         torch.cuda.set_device(args.gpu)
         model = model.cuda(args.gpu)
-    return models
+    return model
         
 
 
