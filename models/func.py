@@ -22,10 +22,10 @@ def get_models(args):
         if args.arch.lower() == "vit": # add vision transformer
             if args.pretrained:
                 print("=> using pre-trained model '{}'".format(args.arch))
-                model = ViT('B_16_imagenet1k', pretrained=True)
+                model = ViT('B_16_imagenet1k', pretrained=True, image_size=224)
             else:
                 print("=> creating model '{}'".format(args.arch))
-                model = ViT('B_16_imagenet1k', pretrained=False)
+                model = ViT('B_16_imagenet1k', pretrained=False, image_size=224)
 
             # model = ViT(image_size=args.image_size,
             #             patch_size=args.patch_size,
