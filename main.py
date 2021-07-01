@@ -26,6 +26,10 @@ if __name__ == '__main__':
                                 momentum=args.momentum,
                                 weight_decay=args.weight_decay)
 
+    if args.evaluate:
+        validate(val_loader, model, criterion, args)
+        exit()
+
     best_acc1 = 0.0
     for epoch in range(args.start_epoch, args.epochs):
         adjust_learning_rate(optimizer, epoch, args)

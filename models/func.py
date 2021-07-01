@@ -1,6 +1,8 @@
 import torch
 import torchvision.models as models
-from vit_pytorch import ViT
+# from vit_pytorch import ViT
+from pytorch_pretrained_vit import ViT
+
 
 model_names = sorted(name for name in models.__dict__
     if name.islower() and not name.startswith("__")
@@ -18,15 +20,22 @@ def get_models(args):
             model = models.__dict__[args.arch]()
     else:
         if args.arch.lower() == "vit": # add vision transformer
-            model = ViT(image_size=args.image_size,
-                        patch_size=args.patch_size,
-                        num_classes=args.num_classes,
-                        dim=1024, # use default settings
-                        depth=6,
-                        heads=16,
-                        mlp_dim=2048,
-                        dropout=0.1,
-                        emb_dropout=0.1)
+            if args.pretrained:
+                print("=> using pre-trained model '{}'".format(args.arch))
+                model = ViT('B_16_imagenet1k', pretrained=True)
+            else:
+                print("=> creating model '{}'".format(args.arch))
+                model = ViT('B_16_imagenet1k', pretrained=False)
+
+            # model = ViT(image_size=args.image_size,
+            #             patch_size=args.patch_size,
+            #             num_classes=args.num_classes,
+            #             dim=1024, # use default settings
+            #             depth=6,
+            #             heads=16,
+            #             mlp_dim=2048,
+            #             dropout=0.1,
+            #             emb_dropout=0.1)
 
     if args.gpu is not None:
         torch.cuda.set_device(args.gpu)
