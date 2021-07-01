@@ -61,4 +61,6 @@ def get_args():
 
     args = parser.parse_args()
 
+    args.distributed = args.world_size > 1 or args.multiprocessing_distributed
+
     return args
