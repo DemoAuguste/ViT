@@ -52,7 +52,7 @@ def get_args():
                             'multi node data parallel training')
 
     # Vision Transformer parameters.
-    parser.add_argument('--image_size', type=int, default=224, help='the image size')
+    parser.add_argument('--image_size', type=int, default=224, help='the image size') # ViT needs image size of 384
     parser.add_argument('--patch_size', type=int, default=32, help='the patch size')
     parser.add_argument('--num_classes', type=int, default=1000, help='the number of classes')
     parser.add_argument('--dataset', type=str, default='ImageNet', help='the dataset')

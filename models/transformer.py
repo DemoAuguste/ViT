@@ -1,1 +1,1 @@
-from vit_pytorch import ViT
+from pytorch_pretrained_vit import ViT
